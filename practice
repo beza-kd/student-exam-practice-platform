@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compound Education Hub | G8 & Highschool</title>
+    <style>
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+        
+        body { 
+            background: linear-gradient(-45deg, #f0f2f5, #e1e9f0, #ffffff);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            scroll-behavior: smooth;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.05);
+        }
+
+        
+        .main-header {
+            background: #1a4a7c; color: white; padding: 1rem 5%;
+            position: sticky; top: 0; z-index: 1000;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+
+        
+        .welcome-hero {
+            padding: 80px 5%; text-align: center;
+            background: linear-gradient(135deg, #1a4a7c 0%, #2a69ac 100%);
+            color: white; border-radius: 0 0 50px 50px;
+        }
+
+        
+        .btn-container { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 30px; }
+        .nav-btn {
+            padding: 15px 30px; border-radius: 50px; border: none; cursor: pointer;
+            font-weight: bold; transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .btn-g8 { background: #ffcc00; color: #1a4a7c; }
+        .btn-hs { background: #00d4ff; color: #0d2a4a; }
+        .nav-btn:hover { transform: scale(1.1); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+
+        
+        #portal-content { display: none; padding: 40px 5%; max-width: 1100px; margin: 0 auto; }
+        .section-card { padding: 30px; margin-bottom: 40px; }
+
+        
+        .subject-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; margin-top: 20px; }
+        .subject-item { 
+            background: white; padding: 15px; border-radius: 12px; 
+            display: flex; justify-content: space-between; align-items: center;
+            border: 1px solid #eee; transition: 0.2s;
+        }
+        .subject-item:hover { border-color: #1a4a7c; background: #f0f7ff; }
+
+        
+        .question-box { margin-bottom: 25px; padding: 20px; background: #fff; border-radius: 15px; border-left: 6px solid #1a4a7c; }
+        .options { list-style: none; margin-top: 10px; }
+        .options li { margin-bottom: 10px; }
+        .options input[type="radio"] { margin-right: 10px; cursor: pointer; }
+        .options label { cursor: pointer; padding: 8px 15px; border-radius: 8px; display: inline-block; width: 90%; transition: 0.2s; }
+        .options label:hover { background: #edf2f7; }
+
+       
+        .checker-box { background: #e6fffa; padding: 20px; border-radius: 15px; text-align: center; border: 2px dashed #38b2ac; }
+        
+        #login-section { height: 80vh; display: flex; justify-content: center; align-items: center; }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="logo"><strong>Compound Education Hub</strong></div>
+        <div style="font-size: 0.8rem; opacity: 0.8;">📍 Addis Ababa, Ethiopia</div>
+    </header>
+
+    
+    <section id="login-section">
+        <div class="glass section-card" style="width: 100%; max-width: 400px; text-align: center;">
+            <h2 style="color:#1a4a7c;">Welcome, Student! </h2>
+            <p style="margin: 10px 0 20px; color:#666;">Ready to check your ability?</p>
+             <input type="username" id="user" placeholder="write anything you want" style="width:100%; padding:15px; margin-bottom:15px; border-radius:10px; border:1px solid #ddd;">
+            <input type="password" id="pass" placeholder="write anything you want" style="width:100%; padding:15px; margin-bottom:15px; border-radius:10px; border:1px solid #ddd;">
+            <button class="nav-btn btn-g8" style="width:100%" onclick="unlock()">Enter Hub</button>
+        </div>
+    </section>
+
+   
+    <main id="portal-content">
+        <section class="welcome-hero">
+            <h1>Welcome this website  </h1>
+            <p>This is your training ground from Grade 8 practice to highschool mastery. Let’s build winners.</p>
+            <div class="btn-container">
+                <button class="nav-btn btn-g8" onclick="scrollToId('g8-zone')">Grade 8 Practice</button>
+                <button class="nav-btn btn-hs" onclick="scrollToId('hs-zone')">Highschool Mastery</button>
+                <button class="nav-btn" style="background:white;" onclick="scrollToId('official-results')">Real Ministry Checker</button>
+            </div>
+        </section>
+
+        
+        <section class="glass section-card" style="margin-top: 40px;">
+            <h3>📂 Subject Resource Library</h3>
+            <div class="subject-grid">
+                <div class="subject-item">Maths <a href="https://www.neaea.com/grade-8/" target="_blank">🔗</a></div>
+                <div class="subject-item">English <a href="https://www.neaea.com/grade-8/" target="_blank">🔗</a></div>
+                <div class="subject-item">Physics <a href="https://www.neaea.com/grade-8/" target="_blank">🔗</a></div>
+                <div class="subject-item">Biology <a href="https://www.neaea.com/grade-8/" target="_blank">🔗</a></div>
+                <div class="subject-item">Chemistry <a href="https://www.neaea.com/grade-8/" target="_blank">🔗</a></div>
+                <div class="subject-item">Geography <a href="https://www.neaea.com/grade-8/" target="_blank">🔗</a></div>
+                <div class="subject-item">History <a href="https://www.neaea.com/grade-8/" target="_blank">🔗</a></div>
+                <div class="subject-item">Economics <a href="https://www.neaea.com/grade-8/" target="_blank">🔗</a></div>
+            </div>
+        </section>
+
+       
+        <section id="g8-zone" class="glass section-card">
+            <h2 style="color:#ffcc00;"> Grade 8 practice Exam (20 Questions)</h2>
+            <form id="g8Form">
+               
+                <div class="question-box">
+                   
+                    <p>1. Choose the correct sentence:</p>
+<ul class="options">
+  <li><label><input type="radio" name="e1" value="correct"> She goes to school every day.</label></li>
+  <li><label><input type="radio" name="e1" value="w"> She go to school every day.</label></li>
+</ul>
+
+<p>2. The synonym of "happy" is:</p>
+<ul class="options">
+  <li><label><input type="radio" name="e2" value="correct"> joyful</label></li>
+  <li><label><input type="radio" name="e2" value="w"> angry</label></li>
+</ul>
+
+<p>3. Choose the correct plural form:</p>
+<ul class="options">
+  <li><label><input type="radio" name="e3" value="correct"> children</label></li>
+  <li><label><input type="radio" name="e3" value="w"> childs</label></li>
+</ul>
+
+<p>4. Fill in the blank: He ___ playing football.</p>
+<ul class="options">
+  <li><label><input type="radio" name="e4" value="correct"> is</label></li>
+  <li><label><input type="radio" name="e4" value="w"> are</label></li>
+</ul>
+
+<p>5. Antonym of "big" is:</p>
+<ul class="options">
+  <li><label><input type="radio" name="e5" value="correct"> small</label></li>
+  <li><label><input type="radio" name="e5" value="w"> large</label></li>
+</ul>
+
+<p>6. Choose correct punctuation:</p>
+<ul class="options">
+  <li><label><input type="radio" name="e6" value="correct"> Where are you going?</label></li>
+  <li><label><input type="radio" name="e6" value="w"> Where are you going</label></li>
+</ul>
+
+<p>7. The past tense of "eat" is:</p>
+<ul class="options">
+  <li><label><input type="radio" name="e7" value="correct"> ate</label></li>
+  <li><label><input type="radio" name="e7" value="w"> eaten</label></li>
+</ul>
+
+<p>8. Choose correct article:</p>
+<ul class="options">
+  <li><label><input type="radio" name="e8" value="correct"> an apple</label></li>
+  <li><label><input type="radio" name="e8" value="w"> a apple</label></li>
+</ul>
+
+<p>9. Opposite of "hot" is:</p>
+<ul class="options">
+  <li><label><input type="radio" name="e9" value="correct"> cold</label></li>
+  <li><label><input type="radio" name="e9" value="w"> warm</label></li>
+</ul>
+
+<p>10. Choose correct spelling:</p>
+<ul class="options">
+  <li><label><input type="radio" name="e10" value="correct"> beautiful</label></li>
+  <li><label><input type="radio" name="e10" value="w"> beutiful</label></li>
+</ul>
+<hr>
+<p>1. 25 + 17 = ?</p>
+<ul class="options">
+  <li><label><input type="radio" name="m1" value="correct"> 42</label></li>
+  <li><label><input type="radio" name="m1" value="w"> 43</label></li>
+</ul>
+
+<p>2. 144 ÷ 12 = ?</p>
+<ul class="options">
+  <li><label><input type="radio" name="m2" value="correct"> 12</label></li>
+  <li><label><input type="radio" name="m2" value="w"> 10</label></li>
+</ul>
+
+<p>3. What is 30% of 200?</p>
+<ul class="options">
+  <li><label><input type="radio" name="m3" value="correct"> 60</label></li>
+  <li><label><input type="radio" name="m3" value="w"> 50</label></li>
+</ul>
+
+<p>4. Solve: 5x = 20</p>
+<ul class="options">
+  <li><label><input type="radio" name="m4" value="correct"> 4</label></li>
+  <li><label><input type="radio" name="m4" value="w"> 5</label></li>
+</ul>
+
+<p>5. Perimeter of square with side 6:</p>
+<ul class="options">
+  <li><label><input type="radio" name="m5" value="correct"> 24</label></li>
+  <li><label><input type="radio" name="m5" value="w"> 36</label></li>
+</ul>
+
+<p>6. 3/4 + 1/4 = ?</p>
+<ul class="options">
+  <li><label><input type="radio" name="m6" value="correct"> 1</label></li>
+  <li><label><input type="radio" name="m6" value="w"> 2</label></li>
+</ul>
+
+<p>7. 9 × 8 = ?</p>
+<ul class="options">
+  <li><label><input type="radio" name="m7" value="correct"> 72</label></li>
+  <li><label><input type="radio" name="m7" value="w"> 81</label></li>
+</ul>
+
+<p>8. Area of rectangle (5 × 3):</p>
+<ul class="options">
+  <li><label><input type="radio" name="m8" value="correct"> 15</label></li>
+  <li><label><input type="radio" name="m8" value="w"> 18</label></li>
+</ul>
+
+<p>9. If x = 7, what is x + 5?</p>
+<ul class="options">
+  <li><label><input type="radio" name="m9" value="correct"> 12</label></li>
+  <li><label><input type="radio" name="m9" value="w"> 11</label></li>
+</ul>
+
+<p>10. 1000 ÷ 100 = ?</p>
+<ul class="options">
+  <li><label><input type="radio" name="m10" value="correct"> 10</label></li>
+  <li><label><input type="radio" name="m10" value="w"> 100</label></li>
+</ul>
+                </div>
+                
+                <button type="button" class="nav-btn btn-g8" style="width:100%" onclick="checkGrade('g8Form')">Check G8 Results</button>
+            </form>
+        </section>
+
+        
+        <section id="hs-zone" class="glass section-card">
+            <h2 style="color:#00d4ff;"> Highschool Challenge (20 Questions)</h2>
+            <form id="hsForm">
+                <div class="question-box">
+                    <p>1. Choose the best revision:</p>
+<p>Although the data was inconsistent, but the researcher proceeded with publication.</p>
+<ul class="options">
+  <li><label><input type="radio" name="e1" value="correct"> Although the data was inconsistent, the researcher proceeded with publication.</label></li>
+  <li><label><input type="radio" name="e1" value="w"> Although the data was inconsistent, but the researcher proceeded with publication.</label></li>
+</ul>
+
+<p>2. The word “cogent” most nearly means:</p>
+<ul class="options">
+  <li><label><input type="radio" name="e2" value="correct"> logically convincing</label></li>
+  <li><label><input type="radio" name="e2" value="w"> emotionally appealing</label></li>
+</ul>
+
+<p>3. Which sentence demonstrates syntactic ambiguity?</p>
+<ul class="options">
+  <li><label><input type="radio" name="e3" value="correct"> Visiting relatives can be annoying.</label></li>
+  <li><label><input type="radio" name="e3" value="w"> The teacher explained the lesson clearly.</label></li>
+</ul>
+
+<p>4. The author’s tone in a passage describing “systemic erosion of trust in institutions” is most likely:</p>
+<ul class="options">
+  <li><label><input type="radio" name="e4" value="correct"> critical and concerned</label></li>
+  <li><label><input type="radio" name="e4" value="w"> celebratory</label></li>
+</ul>
+
+<p>5. In context, “pragmatic approach” refers to:</p>
+<ul class="options">
+  <li><label><input type="radio" name="e5" value="correct"> a realistic, practical method</label></li>
+  <li><label><input type="radio" name="e5" value="w"> an emotional response</label></li>
+</ul>
+
+<p>6. Which sentence is grammatically correct?</p>
+<ul class="options">
+  <li><label><input type="radio" name="e6" value="correct"> Neither of the conclusions appears valid.</label></li>
+  <li><label><input type="radio" name="e6" value="w"> Neither of the conclusions appear valid.</label></li>
+</ul>
+
+<p>7. The phrase “reading between the lines” most closely means:</p>
+<ul class="options">
+  <li><label><input type="radio" name="e7" value="correct"> inferring hidden meaning</label></li>
+  <li><label><input type="radio" name="e7" value="w"> reading slowly</label></li>
+</ul>
+
+<p>8. Which choice best strengthens an argument about climate policy?</p>
+<ul class="options">
+  <li><label><input type="radio" name="e8" value="correct"> Statistical evidence linking emissions to temperature rise</label></li>
+  <li><label><input type="radio" name="e8" value="w"> Personal opinions about weather</label></li>
+</ul>
+
+<p>9. Identify the logical flaw:</p>
+<p>“All successful students study daily. Therefore, anyone who studies daily will be successful.”</p>
+<ul class="options">
+  <li><label><input type="radio" name="e9" value="correct"> It reverses cause and effect</label></li>
+  <li><label><input type="radio" name="e9" value="w"> It uses correct deduction</label></li>
+</ul>
+
+<p>10. The author’s use of rhetorical questions primarily serves to:</p>
+<ul class="options">
+  <li><label><input type="radio" name="e10" value="correct"> engage the reader and provoke thought</label></li>
+  <li><label><input type="radio" name="e10" value="w"> provide factual data</label></li>
+</ul>
+<hr>
+<p>1. A store increases the price of a jacket by 20% and then gives a 10% discount. If the original price was 1000, what is the final price?</p>
+<ul class="options">
+  <li><label><input type="radio" name="w1" value="correct"> 1080</label></li>
+  <li><label><input type="radio" name="w1" value="w"> 1000</label></li>
+</ul>
+
+<p>2. A car travels 180 km at 60 km/h and returns at 90 km/h. What is the average speed for the whole trip?</p>
+<ul class="options">
+  <li><label><input type="radio" name="w2" value="correct"> 72 km/h</label></li>
+  <li><label><input type="radio" name="w2" value="w"> 75 km/h</label></li>
+</ul>
+
+<p>3. A number is increased by 25% and then decreased by 20%. What is the net percentage change?</p>
+<ul class="options">
+  <li><label><input type="radio" name="w3" value="correct"> +0%</label></li>
+  <li><label><input type="radio" name="w3" value="w"> +5%</label></li>
+</ul>
+
+<p>4. A worker completes a job in 12 days. Another worker is twice as fast. How long together?</p>
+<ul class="options">
+  <li><label><input type="radio" name="w4" value="correct"> 4 days</label></li>
+  <li><label><input type="radio" name="w4" value="w"> 6 days</label></li>
+</ul>
+
+<p>5. A tank is filled by pipe A in 6 hours and emptied by pipe B in 8 hours. If both open, time to fill?</p>
+<ul class="options">
+  <li><label><input type="radio" name="w5" value="correct"> 24 hours</label></li>
+  <li><label><input type="radio" name="w5" value="w"> 14 hours</label></li>
+</ul>
+
+<p>6. A shop sells items at 30% profit. If cost price is 500, what is selling price?</p>
+<ul class="options">
+  <li><label><input type="radio" name="w6" value="correct"> 650</label></li>
+  <li><label><input type="radio" name="w6" value="w"> 600</label></li>
+</ul>
+
+<p>7. A triangle has sides 6, 8, and 10. What type of triangle is it?</p>
+<ul class="options">
+  <li><label><input type="radio" name="w7" value="correct"> Right-angled triangle</label></li>
+  <li><label><input type="radio" name="w7" value="w"> Equilateral triangle</label></li>
+</ul>
+
+<p>8. A student scores 70, 80, 90 in 3 tests. What is the average increase needed to reach 85 overall?</p>
+<ul class="options">
+  <li><label><input type="radio" name="w8" value="correct"> 15 points</label></li>
+  <li><label><input type="radio" name="w8" value="w"> 10 points</label></li>
+</ul>
+
+<p>9. A population grows by 10% yearly. If initial is 1000, what after 2 years?</p>
+<ul class="options">
+  <li><label><input type="radio" name="w9" value="correct"> 1210</label></li>
+  <li><label><input type="radio" name="w9" value="w"> 1200</label></li>
+</ul>
+
+<p>10. Two numbers have sum 20 and product 96. What are the numbers?</p>
+<ul class="options">
+  <li><label><input type="radio" name="w10" value="correct"> 12 and 8</label></li>
+  <li><label><input type="radio" name="w10" value="w"> 10 and 10</label></li>
+</ul>
+                </div>
+                
+                <button type="button" class="nav-btn btn-hs" style="width:100%" onclick="checkGrade('hsForm')">Check HS Results</button>
+            </form>
+        </section>
+
+        
+        <section id="official-results" class="glass section-card">
+            <h3>Official Ethiopian Result Portals</h3>
+            <p style="margin-bottom: 20px; color:#666;">Once the official results are out, use these links to check your matric or ministry scores.</p>
+            <div class="checker-box">
+                <h4 style="margin-bottom:10px;">For Grade 8 & 12:</h4>
+                <a href="https://aa.ministry.et/" target="_blank" class="nav-btn btn-g8" style="display:inline-block; text-decoration:none;">Check Grade 8 Result (Addis Ababa)</a>
+                <a href="https://result.eaes.et/" target="_blank" class="nav-btn btn-hs" style="display:inline-block; text-decoration:none; margin-top:10px;">Check Grade 12 Matric Result (EAES)</a>
+            </div>
+        </section>
+    </main>
+    <script>
+
+function unlock() {
+    // Get username and password values
+    let username = document.getElementById('user').value.trim();
+    let password = document.getElementById('pass').value.trim();
+
+    // Allow ANY non-empty username and password
+    if (username !== "" && password !== "") {
+        document.getElementById('login-section').style.display = 'none';
+        document.getElementById('portal-content').style.display = 'block';
+        window.scrollTo(0,0);
+    } else {
+        alert("Please enter both username and password.");
+    }
+}
+
+
+        function scrollToId(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function checkGrade(formId) {
+            const form = document.getElementById(formId);
+            const data = new FormData(form);
+            let score = 0;
+            for (let val of data.values()) { if(val === 'correct') score++; }
+            alert("Chill! You scored " + score + "/20. Check the real portals below to see official results!");
+            scrollToId('official-results');
+        }
+    </script>
+</body>
+</html>
